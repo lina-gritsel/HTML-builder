@@ -12,8 +12,7 @@ fs.readdir(folderCopyPath, (err, files) => {
   } else {
     files.forEach((file) => {
       fs.unlink(path.join(folderCopyPath, file), (err) => {
-        if (err)
-          throw err;
+        if (err) throw err;
       });
     });
   }
@@ -22,11 +21,19 @@ fs.readdir(folderCopyPath, (err, files) => {
 fs.readdir(folderPath, (err, files) => {
   if (err) throw err;
   files.forEach((file) => {
-    if (file.isFile()){}
-    fs.copyFile( path.join(folderPath, file), path.join(folderCopyPath, file), (err) => {
-        if (err)
-          throw err;
+    let adress = path.join(folderPath, file);
+
+    fs.stat(adress, (err, stat) => {
+      if (err) throw err;
+      if (stat.isFile()) {
+        fs.copyFile(
+          path.join(folderPath, file),
+          path.join(folderCopyPath, file),
+          (err) => {
+            if (err) throw err;
+          }
+        );
       }
-    );
+    });
   });
 });

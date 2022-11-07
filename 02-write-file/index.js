@@ -3,7 +3,7 @@ const fs = require('fs');
 const { stdout, stdin, exit } = require('process');
 
 const writeStream = fs.createWriteStream(path.join(__dirname, 'text.txt'));
-stdout.write('Здравствуйте, ');
+stdout.write('Введите свой текст: ');
 const endFunc = () => {
     stdout.write('До свидания!');
     exit();
