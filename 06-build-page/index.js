@@ -35,7 +35,6 @@ fs.readdir(pathStyle, (err, files) => {
 
 const pathComponents = path.join(__dirname, "components");
 const directory = path.dirname(pathNewFolder);
-console.log(directory)
 
 const addHtml = () => {
   fs.readdir(pathComponents, { withFileTypes: true }, (err, files) => {
